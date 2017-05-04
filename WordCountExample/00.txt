@@ -1,11 +1,3 @@
 123
 45.6
-# practice reg
-
-my age is 35 page
-
-
-*demo* and *hello*
-
-
-*heloo*
+demo

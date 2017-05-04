@@ -1,19 +1,20 @@
 %{
 
-
+unsigned charCount = 0;
+unsigned wordCount = 0;
+unsigned lineCount = 0;
 
 %}
+
+word [^ \t\n]+
+eol \n
+
 %%
 
-[\n\t ] ;
+{word} {wordCount++; charCount += yyleng; }
+{eol} {charCount++; lineCount++; }
 
--?(([0-9]+)|([0-9]+)\.[0-9]+) { printf("%s: is number \n", yytext); }
-
-#.* { printf("%s: is comment \n", yytext);}
-
-\*[^*\n]*[*\n] { printf("%s: is quoted string \n", yytext);}
-
-. ;
+. charCount++;
 
 %%
 

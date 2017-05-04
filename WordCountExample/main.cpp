@@ -7,6 +7,9 @@
 #include "lexer.h"
 
 extern FILE *yyin;
+extern unsigned charCount;
+extern unsigned wordCount;
+extern unsigned lineCount;
 
 int main(int argc, char *argv[])
 {
@@ -15,6 +18,8 @@ int main(int argc, char *argv[])
     yyin = fopen("00.txt", "r");
 
     yylex();
+
+    printf("%d,%d,%d", charCount, wordCount,lineCount);
 
     fclose(yyin);
 
