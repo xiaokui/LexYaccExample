@@ -1,0 +1,23 @@
+void GNetAutoLabeling::doStep(int nStep)
+{
+        emit sig_finished();
+        emit sig_finished1(0);
+}
+
+/*
+[
+{
+"name": "",
+"values": [
+{
+"data": "",
+"selected": ""
+}
+]
+}
+]
+
+*/
+QString QDJY::GNetLabeling::toJson()
+{
+}
