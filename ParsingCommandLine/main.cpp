@@ -8,9 +8,13 @@
 
 extern FILE *yyin;
 
+extern char *progName;
+
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
+
+    progName = *argv;
 
     yyin = fopen("00.txt", "r");
 

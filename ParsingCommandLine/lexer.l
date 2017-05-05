@@ -1,19 +1,19 @@
 %{
 
+unsigned verbose;
+char *progName;
 
 
 %}
 %%
 
-[\n\t ] ;
+-h   |
+"-?" |
+-help { printf("usage is %s [-hlep | -h | -? ] [-verbose | -v ] "
+            "[(-file | -f ) fileName]\n", progName); }
 
--?(([0-9]+)|([0-9]+)\.[0-9]+) { printf("%s: is number \n", yytext); }
-
-#.* { printf("%s: is comment \n", yytext);}
-
-\*[^*\n]*[*\n] { printf("%s: is quoted string \n", yytext);}
-
-. ;
+-v |
+-verbos {printf("verbos mode is on \n"); verbose=1;}
 
 %%
 
