@@ -5,7 +5,13 @@ char *progName;
 
 
 %}
+
+%s FNAME
+
 %%
+[ ]+               ;
+
+
 
 -h   |
 "-?" |
@@ -14,6 +20,17 @@ char *progName;
 
 -v |
 -verbos {printf("verbos mode is on \n"); verbose=1;}
+
+-f |
+-file { BEGIN FNAME; }
+
+
+
+
+<FNAME>[^ ]+ {printf("use file is %s\n", yytext); BEGIN 0;}
+
+
+
 
 %%
 
