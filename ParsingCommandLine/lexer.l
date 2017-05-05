@@ -9,7 +9,7 @@ char *progName;
 %s FNAME
 
 %%
-[ ]+               ;
+[ ]+               { ;}
 
 
 
@@ -25,13 +25,7 @@ char *progName;
 -file { BEGIN FNAME; }
 
 
-
-
 <FNAME>[^ ]+ {printf("use file is %s\n", yytext); BEGIN 0;}
-
-
-
-
 %%
 
 
