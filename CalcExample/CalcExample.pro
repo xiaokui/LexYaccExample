@@ -9,7 +9,7 @@ FLEXSOURCES = \
 
 
 BISONSOURCES = \
-                #parser.y \
+                parser.y \
 
 
 OTHER_FILES +=  \

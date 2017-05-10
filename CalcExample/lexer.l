@@ -1,19 +1,18 @@
 %{
 
+#include <stdio.h>
 
+#include "parser.h"
+
+extern int yylval;
 
 %}
+
 %%
-
-[\n\t ] ;
-
--?(([0-9]+)|([0-9]+)\.[0-9]+) { printf("%s: is number \n", yytext); }
-
-#.* { printf("%s: is comment \n", yytext);}
-
-\*[^*\n]*[*\n] { printf("%s: is quoted string \n", yytext);}
-
-. ;
+[0-9]+ { yylval = atoi(yytext); return NUMBER; }
+[ \t]   ;
+\n return 0;
+. {  return yytext[0];}
 
 %%
 

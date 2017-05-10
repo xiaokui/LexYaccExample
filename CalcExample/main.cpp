@@ -5,6 +5,7 @@
 #include <QTextCodec>
 
 #include "lexer.h"
+#include "parser.h"
 
 extern FILE *yyin;
 
@@ -14,7 +15,8 @@ int main(int argc, char *argv[])
 
     yyin = fopen("00.txt", "r");
 
-    yylex();
+    //yylex();
+    yyparse();
 
     fclose(yyin);
 
