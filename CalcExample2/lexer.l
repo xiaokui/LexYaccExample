@@ -1,17 +1,24 @@
 %{
 
 #include <stdio.h>
+#include <math.h>
 
 #include "parser.h"
 
-extern int yylval;
+//extern int yylval;
+extern double vbltable[26];
 
 %}
 
 %%
-[0-9]+ { yylval = atoi(yytext); return NUMBER; }
+([0-9]+|[0-9]*\.[0-9]+) { yylval.dval = atof(yytext); return NUMBER; }
 [ \t]   ;
-\n return 0;
+
+[a-z] { yylval.vblno = yytext[0]-'a'; return NAME;}
+
+"$" { return 0; }
+
+\n |
 . {  return yytext[0];}
 
 %%
