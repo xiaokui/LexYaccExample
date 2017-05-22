@@ -20,11 +20,15 @@ OTHER_FILES +=  \
 
 QT += core gui script
 
-#添加 win_flex 和 gnuwin32的路径
+#添加 win_flex �? gnuwin32的路�?
 INCLUDEPATH += "D:/win_flex" \
                "C:/gunwin32/include" \
 
-SOURCES += main.cpp
+HEADERS += \
+    SymbolTable.h
+
+SOURCES += main.cpp \
+    SymbolTable.cpp
 
 TEMPLATE = app
 
@@ -63,3 +67,5 @@ bisonheader.name = Bison Headers ${QMAKE_FILE_IN}
 bisonheader.CONFIG += target_predeps no_link
 
 QMAKE_EXTRA_COMPILERS += bisonheader
+
+

@@ -2,21 +2,29 @@
 %{
 
 #include <stdio.h.>
+//#include "SymbolTable.h"
+
+
+extern struct symtab {
+    char *name;
+    double value;
+};
+extern struct symtab *symlook(char *s);
+
 
 extern int yylex(void);
 void yyerror(const char *s);
 
-double vbltable[26];
 
 %}
 
 %union {
     double dval;
-    int vblno;
+    struct symtab *symp;
 }
 
 
-%token <vblno> NAME
+%token <symp> NAME
 %token <dval>  NUMBER
 %left '-' '+'
 %left '*' '/'
@@ -29,7 +37,7 @@ statement_list: statement '\n'
     | statement_list statement '\n'
     ;
 
-statement: NAME '=' expression { vbltable[$1] = $3; }
+statement: NAME '=' expression { $1->value = $3; }
     |   expression {printf("= %g\n", $1); }
     ;
 
@@ -47,7 +55,7 @@ expression: expression '+' expression { $$ = $1 + $3;  }
     |   '-' expression %prec UMINUS { $$ = -$2; }
     |   '(' expression ')' { $$ = $2; }
     |   NUMBER
-    |   NAME    { $$ = vbltable[$1]; }
+    |   NAME    { $$ = $1->value; }
     ;
 
 %%

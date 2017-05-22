@@ -2,11 +2,15 @@
 
 #include <stdio.h>
 #include <math.h>
-
+//#include "SymbolTable.h"
 #include "parser.h"
 
-//extern int yylval;
-extern double vbltable[26];
+
+extern struct symtab {
+    char *name;
+    double value;
+};
+extern struct symtab *symlook(char *s);
 
 %}
 
@@ -14,7 +18,10 @@ extern double vbltable[26];
 ([0-9]+|[0-9]*\.[0-9]+) { yylval.dval = atof(yytext); return NUMBER; }
 [ \t]   ;
 
-[a-z] { yylval.vblno = yytext[0]-'a'; return NAME;}
+[a-zA-Z][A-Za-z0-9]* {
+    yylval.symp = symlook(yytext);
+    return NAME;
+}
 
 "$" { return 0; }
 

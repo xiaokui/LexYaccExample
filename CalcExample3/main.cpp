@@ -6,6 +6,7 @@
 
 #include "lexer.h"
 #include "parser.h"
+//#include "SymbolTable.h"
 
 extern FILE *yyin;
 
