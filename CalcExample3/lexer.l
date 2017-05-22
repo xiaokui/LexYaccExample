@@ -2,15 +2,8 @@
 
 #include <stdio.h>
 #include <math.h>
-//#include "SymbolTable.h"
+#include "SymbolTable.h"
 #include "parser.h"
-
-
-extern struct symtab {
-    char *name;
-    double value;
-};
-extern struct symtab *symlook(char *s);
 
 %}
 

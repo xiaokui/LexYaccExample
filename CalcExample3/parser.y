@@ -2,15 +2,7 @@
 %{
 
 #include <stdio.h.>
-//#include "SymbolTable.h"
-
-
-extern struct symtab {
-    char *name;
-    double value;
-};
-extern struct symtab *symlook(char *s);
-
+#include "SymbolTable.h"
 
 extern int yylex(void);
 void yyerror(const char *s);

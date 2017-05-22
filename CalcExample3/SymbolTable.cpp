@@ -4,6 +4,9 @@
 #include "parser.h"
 #include "stdlib.h"
 
+
+struct symtab symtab[NSYMS];
+
 void yyerror(const char *s);
 
 struct symtab *symlook(char *s)
