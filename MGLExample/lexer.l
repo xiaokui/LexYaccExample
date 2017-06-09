@@ -2,24 +2,24 @@
 
 #include <stdio.h>
 #include <math.h>
-#include "SymbolTable.h"
 #include "parser.h"
+
+int lineno;
+
 
 %}
 
+ws [ \t]+
+nl \n
+
+
 %%
-([0-9]+|[0-9]*\.[0-9]+) { yylval.dval = atof(yytext); return NUMBER; }
-[ \t]   ;
 
-[a-zA-Z][A-Za-z0-9]* {
-    yylval.symp = symlook(yytext);
-    return NAME;
-}
+{ws} ;
+command {return COMMAND;}
+{nl} {lineno++;}
+. { return yytext[0];}
 
-"$" { return 0; }
-
-\n |
-. {  return yytext[0];}
 
 %%
 

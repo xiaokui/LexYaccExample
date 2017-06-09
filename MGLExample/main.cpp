@@ -6,17 +6,13 @@
 
 #include "lexer.h"
 #include "parser.h"
-#include "SymbolTable.h"
+//#include "SymbolTable.h"
 
 extern FILE *yyin;
 
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
-
-    addfunc("sqrt", sqrt);
-    addfunc("log", log);
-
 
     yyin = fopen("00.txt", "r");
 
