@@ -9,6 +9,7 @@ struct symtab symtab[NSYMS];
 
 void yyerror(const char *s);
 
+// 查找符号表
 struct symtab *symlook(char *s)
 {
 
@@ -31,7 +32,7 @@ struct symtab *symlook(char *s)
     exit(1);
 }
 
-
+// 添加自定义函数
 void addfunc(char *name, double (*func)(double))
 {
 

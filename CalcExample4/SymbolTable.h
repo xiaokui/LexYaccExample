@@ -2,13 +2,14 @@
 #define SYMBOLTABLE_H
 
 
+// 默认符号表的长度是20，存放20个自定义函数
 #define NSYMS 20
 
-
+// 符号表信息
 struct symtab {
-    char *name;
-    double value;
-    double (*funcptr)(double);
+    char *name;                 // 名称
+    double value;               // 数据
+    double (*funcptr)(double);  // 操作函数
 };
 
 
