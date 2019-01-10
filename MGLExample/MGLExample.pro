@@ -3,9 +3,10 @@
 CONFIG += console
 CONFIG -= app_bundle
 
+
+
 FLEXSOURCES = \
                lexer.l \
-               #base.l \
 
 
 BISONSOURCES = \
@@ -20,9 +21,12 @@ OTHER_FILES +=  \
 
 QT += core gui script
 
+#DEFINES += YY_NO_UNISTD_H
+
 
 INCLUDEPATH += "D:/win_flex" \
-               "C:/gunwin32/include" \
+               #"D:/gunwin32/include" \
+
 
 HEADERS += \
     #SymbolTable.h
