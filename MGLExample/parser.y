@@ -13,16 +13,21 @@ void do_id(const char *s);
 
 
 extern void start_screen(char *s);
+extern void add_title(char *s);
+extern void add_line(char *s);
 
+char *act_str = NULL;
 
 %}
 
 %union {
     char *string;
+    int val;
 };
 
 %token COMMAND ACTION IGNORE EXECUTE ITEM TITLE SCREEN END
 %token <string> QSTRING ID
+%type <val> action
 %%
 
 start: screens
@@ -51,7 +56,7 @@ titles:
         | titles title
         ;
 
-title:  TITLE QSTRING
+title:  TITLE QSTRING { add_title($2); }
         ;
 
 lines: line
@@ -59,21 +64,24 @@ lines: line
         ;
 
 line: ITEM QSTRING command action
-        ;
+        {
+            //item_str = $2;
+            add_line($2);
 
-items: /* empty */
-        | items item
-        ;
-
-item: ITEM QSTRING command action
+            //$$ = ITEM;
+        }
         ;
 
 command: COMMAND
         | COMMAND ID { do_id($2); }
         ;
 
-action: ACTION IGNORE
+action: ACTION IGNORE { }
         | ACTION EXECUTE QSTRING
+{
+    act_str = $3;
+    $$ = EXECUTE;
+}
         ;
 
 %%

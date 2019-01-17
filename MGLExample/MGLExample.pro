@@ -33,9 +33,11 @@ HEADERS += \
     screenManager.h
 
 
-SOURCES += main.cpp \
+SOURCES +=  \
+        screenManager.cpp \
+        main.cpp \
     #SymbolTable.cpp
-    screenManager.cpp \
+
 
 
 

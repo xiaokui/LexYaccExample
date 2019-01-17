@@ -14,6 +14,8 @@ extern FILE *yyin;
 
 void do_id(const char *s)
 {
+    return;
+
     printf("--%s\n", s);
 }
 
@@ -42,12 +44,24 @@ int dotest()
 {
     yyin = fopen("00.txt", "r");
 
-
-    screenManager m;
-
     yyparse();
 
     fclose(yyin);
+
+    for (int i = 0; i < screenManager::instance()->allObjects()->size(); ++i)
+    {
+        struct stScreenItem *pItem = screenManager::instance()->allObjects()->at(i);
+
+        printf("%s\n", pItem->screenName.toUtf8().data());
+        printf("%s\n", pItem->titleName.toUtf8().data());
+
+        for (int j =0; j < pItem->itemName.size(); ++j)
+        {
+            printf("%d, %s\n", j+1, pItem->itemName.at(j).toUtf8().data());
+        }
+        printf("\n\n");
+
+    }
 
     return 0;
 }
