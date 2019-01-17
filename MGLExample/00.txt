@@ -1,10 +1,14 @@
 
+screen main
 title "My First Menu"
 title "by Tony Mason"
-
 item "List Things to Do" command action ignore
+item "Quit" command quit100 action ignore
+end main
 
-item "Quit" command quit11 action ignore
-
-
+screen one
+title "test one"
+item "001" command cmd001 action ignore
+item "002" command cmd002 action ignore
+end one
 

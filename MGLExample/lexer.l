@@ -15,12 +15,15 @@ void warning(char *s, char *t)
 
 void log(char *s)
 {
+    return;
+
     printf("line: %d {%s}\n", lineno, s);
 }
 
 
 %}
 ws          [ \t]+
+comment     #.*
 qstring     \"[^\"\n]*[\"\n]
 id          [a-zA-Z][a-zA-Z0-9]*
 nl          \n
@@ -48,6 +51,7 @@ command {log("command");return COMMAND;}
 action {log("action");return ACTION;}
 execute {log("execute");return EXECUTE;}
 ignore {log("ignore");return IGNORE;}
+end {return END;}
 {id} {  log("id");
         yylval.string = strdup(yytext);
         return ID;

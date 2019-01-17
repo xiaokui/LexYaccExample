@@ -30,9 +30,14 @@ INCLUDEPATH += "D:/win_flex" \
 
 HEADERS += \
     #SymbolTable.h
+    screenManager.h
+
 
 SOURCES += main.cpp \
     #SymbolTable.cpp
+    screenManager.cpp \
+
+
 
 TEMPLATE = app
 
