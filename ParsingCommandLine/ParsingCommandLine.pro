@@ -22,7 +22,7 @@ QT += core gui script
 
 #添加 win_flex 和 gnuwin32的路径
 INCLUDEPATH += "D:/win_flex" \
-               "C:/gunwin32/include" \
+               "d:/gunwin32/include" \
 
 SOURCES += main.cpp
 

@@ -14,7 +14,7 @@ void yyerror(const char *s);
 %%
 
 statement: NAME '=' expression
-    |   expression {printf("= %d\n", $1); }
+    |   expression {printf("exp = %d\n", $1); }
     ;
 
 expression: expression '+' NUMBER { $$ = $1 + $3;  }

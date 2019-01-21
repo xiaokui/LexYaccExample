@@ -17,6 +17,8 @@ OTHER_FILES +=  \
     $$FLEXSOURCES \
     $$BISONSOURCES \
     00.txt \
+    readme.txt \
+
 
 
 QT += core gui script

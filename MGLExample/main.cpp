@@ -10,6 +10,9 @@
 #include "parser.h"
 #include "screenManager.h"
 
+#include <iostream>
+
+
 extern FILE *yyin;
 
 void do_id(const char *s)
@@ -57,7 +60,7 @@ int dotest()
 
         for (int j =0; j < pItem->itemName.size(); ++j)
         {
-            printf("%d, %s\n", j+1, pItem->itemName.at(j).toUtf8().data());
+            printf("%d) %s\n", j+1, pItem->itemName.at(j).toUtf8().data());
         }
         printf("\n\n");
 
@@ -75,6 +78,21 @@ int main(int argc, char *argv[])
     //doparse(buffer);
 
     dotest();
+
+    for (;;)
+    {
+        char a;
+        std::cin >> a;
+        std::cout << a;
+        switch (a) {
+        case 'q':
+            return 0;
+            break;
+        default:
+            break;
+        }
+    }
+
 
     return app.exec();
 }
